@@ -14,6 +14,11 @@ app.get("/", (req, res) => {
     res.json(data);
 });
 
+app.get("/users/:id", (req, res) => {
+    const user = data.find(user => user.id === +req.params.id);
+    res.json(user);
+});
+
 app.listen(PORT, () => {
     console.log(`Your server is running on port ${PORT}`);
 });
