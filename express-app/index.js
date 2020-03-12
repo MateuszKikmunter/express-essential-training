@@ -14,9 +14,12 @@ app.get("/", (req, res) => {
     res.json(data);
 });
 
-app.get("/users/:id", (req, res) => {
+app.get("/users/:id", (req, res, next) => {
     const user = data.find(user => user.id === +req.params.id);
     res.json(user);
+    next();
+}, (req, res) => {
+    console.log("Did you get the right data?");
 });
 
 app.listen(PORT, () => {
